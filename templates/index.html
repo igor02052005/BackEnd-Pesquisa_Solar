@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serviço de Uploading de Arquivos Pesquisa Solar</title>
+    <script>
+        function executarScript() {
+            fetch('/executar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Script executado com sucesso! Saída:\n" + data.output);
+                } else {
+                    alert("Erro ao executar o script: " + data.message);
+                }
+            })
+            .catch(error => {
+                alert("Erro: " + error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Serviço de Uploading de Arquivos Pesquisa Solar</h1>
+    <button onclick="executarScript()">Executar Uploading</button>
+</body>
+</html>
